@@ -1,0 +1,16 @@
+Package: DVineSD
+Title: Modeling Longitudinal Data Using a Pair-Copula Decomposition of Serial Dependence
+Version: 0.0.0.1
+Authors@R: 
+    person("Alexandre", "Lepage", , "alexlepage07@hotmail.com", role = c("aut", "cre"))
+Description: 
+This package is an implementation of the concepts and methods described in 
+Smith, M., Min, A., Almeida, C., & Czado, C. (2010). Modeling longitudinal data
+using a pair-copula decomposition of serial dependence. Journal of the American
+Statistical Association, 105(492), 1467-1479.
+<https://www.tandfonline.com/doi/abs/10.1198/jasa.2010.tm09572>
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
