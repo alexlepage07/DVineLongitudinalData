@@ -36,7 +36,7 @@ the simulation study here: `inst/Simulation_study.R`.
 All you need to install the package is this file : `DVineSD_0.0.1.zip`
 by using this command once you have pulled the repo:
  
-```{r eval = FALSE}
+```
 install.packages("~/DVineSD_0.0.1.zip", repos = NULL, type = "win.binary")
 ```
 
