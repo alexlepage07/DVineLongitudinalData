@@ -10,16 +10,14 @@
 #' 
 #' 
 #' @param u (numeric) a vector of marginal uniforms
-#' @param longitudinalDVine A S3 object of class LongitudinalDVine
+#' @param longitudinalDVine An S4 object of class LongitudinalDVine
 #' 
 #' @return (numeric) The triangle of conditionnal uniforms
 #' 
 #' @examples 
-#' x <- system.file("extdata", "eg1.dat", package = "DVineSD")
-#' x <- data.table::fread(x, skip = 22, select = "LOAD")$LOAD
-#' trained_DVine <- fit_LongitudinalDVine(head(x, 100), max_lag = 20L)
-#' u <- ecdf(x)(x[1:5])
-#' build_u_tree(u, trained_DVine)
+#' u <- pnorm(stats::arima.sim(list(order = c(1,0,0), ar = 0.85), n = 100))
+#' trained_DVine <- fit_LongitudinalDVine(u)
+#' build_u_tree(u[1:5], trained_DVine)
 #' @export
 build_u_tree <- function(u, longitudinalDVine)
 {

@@ -9,19 +9,23 @@
 #' @param ... arguments of pmargin
 #' @param max_lag (integer) the maximum lag the dependence structure can support
 #' 
-#' @return an S3 object containing a list of all fitted bivariate copulas. 
+#' @return an S4 object containing a list of all fitted bivariate copulas. 
 #' As an attribute, you can retrieve a version of the `pmargin` value with
 #' its parameters nested inside the function.
 #' 
 #' @examples 
 #' # Simulating an AR(1) time series
-#' x <- stats::arima.sim(list(order = c(1,0,0), ar = 0.85), n = 100)
+#' x <- stats::arima.sim(list(order = c(1,0,0), ar = 0.85), n = 500L)
 #' x <- pnorm(x)
-#' trained_DVine <- fit_LongitudinalDVine(x)
+#' fit_LongitudinalDVine(x)
 #' 
-#' # Fit a longitudinal Dvine on 
-#' x <- system.file("extdata/eg1.dat", package = "DVineSD")
-#' x <- data.table::fread(x, skip = 22, select = "LOAD")$LOAD
+#' 
+#' # Fit a longitudinal Dvine on an archimedian copula
+#' Dvine_copula <- DVineSD::LongitudinalDVine_dist(x = list(
+#'    list(family = "frank",  rotation = 0, parameters = 3)
+#' ))
+#' x <- DVineSD::simul_serial_dependence(Dvine_copula, nseq = 500L)
+#' fit_LongitudinalDVine(x, max_lag = 2L)
 #' 
 #' @export
 
@@ -60,8 +64,8 @@ fit_LongitudinalDVine <- function(x, pmargin, ..., max_lag)
       .c <- rvinecopulib::bicop(
          .pairs, 
          family_set = c("onepar", "indep"), 
-         par_method = "mle", 
-         selcrit = "mbic",
+         par_method = "itau", 
+         selcrit = "aic",
          cores = 4L
       )
       

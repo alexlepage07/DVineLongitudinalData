@@ -46,7 +46,7 @@ simul_serial_dependence <- function(
    
    assertthat::assert_that(inherits(longitudinalDVine, "LongitudinalDVine"))
    
-   qmargin <- if(missing(qmargin)) function(x) x else qmargin
+   qmargin <- if(missing(qmargin)) function(y) y else qmargin
    
    if(!missing(x)) {
       pmargin <- attr(longitudinalDVine, "pmargin")
